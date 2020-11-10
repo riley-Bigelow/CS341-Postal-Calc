@@ -29,9 +29,6 @@ function handleRates(request, response) {
 
 
 function calculateRate(response, type, weight) {
-	op = op.toLowerCase();
-
-
 	/*// JSON object of the values  to pass  to the EJS result
 	const params = {operation: op, left: left, right: right, result: result};
 
