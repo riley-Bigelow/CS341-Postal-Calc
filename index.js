@@ -44,7 +44,7 @@ function calculateRate(response, weight, type, zone) {
   cost = cost.toFixed(2);
   console.log(cost);
   
-  if(zone == "NAN"){
+  if(zone == NaN){
     zone = "Not Applicable";
   }
 
