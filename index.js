@@ -35,10 +35,10 @@ function calculateRate(response, weight, type, zone) {
   else if(type == "Letters(Metered)"){
     cost = meteredLetters(weight);
   }
-  else if(type="Large Envelopes(Flats)"){
+  else if(type =="Large Envelopes(Flats)"){
     cost = flats(weight);
   }
-  else{
+  else {
     cost = packages(weight,zone);
   }
   cost = cost.toFixed(2);
@@ -95,13 +95,14 @@ function flats(weight){
 }
 
 function packages(weight,zone){
+  console.log('hitting packages')
   weight = Math.ceil(weight)
   if(weight > 13){
     weight = 13;
   }
   if(weight <= 4){
-    let basePrice = 3.80
-    let increase = .05
+    basePrice = 3.80
+    increase = .05
     if(zone <= 2){
       return basePrice 
     }
@@ -113,8 +114,8 @@ function packages(weight,zone){
     }
   }
   else if (weight <=8){
-    let basePrice = 4.60
-    let increase = .05
+    basePrice = 4.60
+    increase = .05
     if(zone <= 2){
       return basePrice
     }
@@ -130,7 +131,7 @@ function packages(weight,zone){
       }
     }
   } 
-  else if(wieght <= 12){
+  else if(weight <= 12){
     let basePrice = 5.30
     let increase = .05
     if(zone <= 2){
