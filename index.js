@@ -58,7 +58,7 @@ function stampedLetters(weight){
     return 1.00;
   }
   else {
-   weight=  Math.round(weight)
+   weight=  Math.ceil(weight)
     basePrice += ((weight -1) * increase)
     return basePrice;
   }
@@ -71,7 +71,7 @@ function meteredLetters(weight){
     return .95;
   }
   else {
-    weight=  Math.round(weight)
+    weight=  Math.ceil(weight)
     basePrice += ((weight -1) * increase)
     return basePrice;
   }
@@ -80,7 +80,7 @@ function meteredLetters(weight){
 function flats(weight){
   basePrice = 1.00;
   increase = .20
-  weight = Math.round(weight)
+  weight = Math.ceil(weight)
   if(weight > 13){
     weight = 13;
   }
