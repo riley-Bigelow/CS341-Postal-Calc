@@ -22,11 +22,12 @@ app.listen(port, function() {
 function handleRates(request, response) {
 	const weight = parseFloat(request.query.weight);
   const itemtype = request.query.itemtype;
-	calculateRate(response, weight,itemtype);
+  const zone = Number(request.query.zone);
+	calculateRate(response, weight,itemtype,zone);
 }
 
 
-function calculateRate(response, weight, type) {
+function calculateRate(response, weight, type, zone) {
   var cost = 0.00
   if(type == 'Letters(Stamped)'){
     cost = stampedLetters(weight);
@@ -38,7 +39,7 @@ function calculateRate(response, weight, type) {
     cost = flats(weight);
   }
   else{
-    cost = packages(weight);
+    cost = packages(weight,zone);
   }
   cost = cost.toFixed(2);
   console.log(cost);
@@ -54,7 +55,7 @@ function calculateRate(response, weight, type) {
 function stampedLetters(weight){
   basePrice = .55;
   increase = .15
-  if(weight > 3.5){
+  if(weight >= 3.5){
     return 1.00;
   }
   else {
@@ -67,7 +68,7 @@ function stampedLetters(weight){
 function meteredLetters(weight){
   basePrice = .50;
   increase = .15
-  if(weight > 3.5){
+  if(weight >= 3.5){
     return .95;
   }
   else {
@@ -84,12 +85,93 @@ function flats(weight){
   if(weight > 13){
     weight = 13;
   }
-  if(weight < 2){
+  if(weight <= 2){
     return basePrice;
   }
   else{
     basePrice += ((weight-1) * increase)
     return basePrice;
   } 
+}
+
+function packages(weight,zone){
+  weight = Math.ceil(weight)
+  if(weight > 13){
+    weight = 13;
+  }
+  if(weight <= 4){
+    let basePrice = 3.80
+    let increase = .05
+    if(zone <= 2){
+      return basePrice 
+    }
+    else if(zone <= 7){
+      return basePrice += ((zone - 2) * increase) 
+    }
+    else{
+      return basePrice += ((9 - 1) * increase)
+    }
+  }
+  else if (weight <=8){
+    let basePrice = 4.60
+    let increase = .05
+    if(zone <= 2){
+      return basePrice
+    }
+    else if(zone <= 6){
+      return basePrice += ((zone - 2) * increase);  
+    }
+    else{
+      if(zone == 7){
+        return basePrice += .30;
+      }
+      else{
+        return basePrice += .40; 
+      }
+    }
+  } 
+  else if(wieght <= 12){
+    let basePrice = 5.30
+    let increase = .05
+    if(zone <= 2){
+      return basePrice
+    }
+    else if(zone <= 6){
+      return basePrice += ((zone - 2) * increase);  
+    }
+    else{
+      if(zone == 7){
+        return basePrice += .35;
+      }
+      else{
+        return basePrice += .45; 
+      }
+    }
+  }
+  else{
+    let basePrice = 5.90
+    let increase = .05
+    if(zone <= 2){
+      return basePrice
+    }
+    else if(zone == 3){
+      return basePrice += .05;  
+    }
+    else if(zone == 4){
+      return basePrice += .15;
+    }
+    else if (zone == 5){
+      return basePrice += .25; 
+    }
+    else if(zone == 6){
+      return basePrice += .30;
+    }
+    else if (zone == 7){
+      return basePrice += .50; 
+    }
+    else{
+      return basePrice += .60;
+    }
+  }
 }
 

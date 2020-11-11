@@ -22,23 +22,31 @@
 		<form action="/rates">
 			<div class="frow">
 				<div class="col-25">
-				<label for="weight">Item Weight:</label>
+					<label for="weight">Item Weight:</label>
 				</div>
 				<div class="col-75">
-				<input type="number" id="weight" name="weight" placeholder="weight of item.." min="1" step=".25">
+					<input type="number" id="weight" name="weight" placeholder="weight of item.." min="1" step=".25">
 				</div>
 			</div>
 			<div class="frow">
 				<div class="col-25">
-				<label for="itemtype">Item type</label>
+					<label for="itemtype">Item type</label>
 				</div>
 				<div class="col-75">
-				<select id="itemtype" name="itemtype">
-					<option value="Letters(Stamped)">Letters(Stamped)</option>
-					<option value="Letters(Metered)">Letters(Metered)</option>
-					<option value="Large Envelopes(Flats)">Large Envelopes(Flats)</option>
-					<option value="First-Class Package Service-Retail">First-Class Package Service-Retail</option>
-				</select>
+					<select id="itemtype" name="itemtype" onchange="activateZone()">
+						<option value="Letters(Stamped)">Letters(Stamped)</option>
+						<option value="Letters(Metered)">Letters(Metered)</option>
+						<option value="Large Envelopes(Flats)">Large Envelopes(Flats)</option>
+						<option value="First-Class Package Service-Retail">First-Class Package Service-Retail</option>
+					</select>
+				</div>
+			</div>
+			<div class="frow">
+				<div class="col-25">
+					<label for="zone">Zone:</label>
+				</div>
+				<div class="col-75">
+					<input type="number" id="zone" name="zone" min="1" max="13" disabled>
 				</div>
 			</div>
 			<div class="frow">
@@ -49,6 +57,16 @@
 	</div> 
 </div>
 <div class="container-fluid" id ="footer"></div>
-
+<script>
+	function activateZone(){
+		var selection  = document.getElementById('itemtype').value;
+		if(selection == 'First-Class Package Service-Retail'){
+			document.getElementById('zone').disabled = false;
+		}
+		else{
+			document.getElementById('zone').disabled = true;
+		}
+	}
+</script>
 </body>
 </html>
