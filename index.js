@@ -11,8 +11,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 
-// rule requesting "/math" should be handled by the
-// handleMath in model js 
+// rule requesting "/rates" should be handled by the
 app.get('/rates', handleRates);
 
 // start the server listening
@@ -21,18 +20,20 @@ app.listen(port, function() {
 });
 
 function handleRates(request, response) {
-	/*const operation = request.query.operation;
-	const operand1 = Number(request.query.operand1);
-	const operand2 = Number(request.query.operand2);
-	calculateRate(response, operation, operand1, operand2);*/
+	const weight = parseFloat(request.query.weight);
+	const itemtype = request.query.itemtype;
+	calculateRate(response, weight,itemtype);
 }
 
 
 function calculateRate(response, type, weight) {
-	/*// JSON object of the values  to pass  to the EJS result
-	const params = {operation: op, left: left, right: right, result: result};
+
+  console.log(weight + " " + type);
+
+	// JSON object of the values  to pass  to the EJS result
+	const params = {weight: weight, type: type, cost: cost };
 
 	// Render the response, using "result.ejs" in the pages directory
-	response.render('pages/result', params);*/
+	response.render('pages/result', params);
 }
 

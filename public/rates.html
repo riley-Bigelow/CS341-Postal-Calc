@@ -25,46 +25,33 @@
 		<form action="/rates">
 		  <div class="frow">
 			<div class="col-25">
-			  <label for="fname">First Name</label>
+			  <label for="weight">Item Weight</label>
 			</div>
 			<div class="col-75">
-			  <input type="text" id="fname" name="firstname" placeholder="Your name..">
+			  <input type="number" id="weight" name="weight" placeholder="weight of item.." min="1" step=".25">
 			</div>
 		  </div>
 		  <div class="frow">
 			<div class="col-25">
-			  <label for="lname">Last Name</label>
+			  <label for="itemtype">Item type</label>
 			</div>
 			<div class="col-75">
-			  <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-			</div>
-		  </div>
-		  <div class="frow">
-			<div class="col-25">
-			  <label for="country">Country</label>
-			</div>
-			<div class="col-75">
-			  <select id="country" name="country">
-				<option value="australia">Australia</option>
-				<option value="canada">Canada</option>
-				<option value="usa">USA</option>
+			  <select id="itemtype" name="itemtype">
+				<option value="Letters(Stamped)">Letters(Stamped)</option>
+				<option value="Letters(Metered)">Letters(Metered)</option>
+				<option value="Large Envelopes(Flats)">Large Envelopes(Flats)</option>
+				<option value="First-Class Package Service-Retail">First-Class Package Service-Retail</option>
 			  </select>
 			</div>
 		  </div>
 		  <div class="frow">
-			<div class="col-25">
-			  <label for="subject">Subject</label>
-			</div>
-			<div class="col-75">
-			  <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-			</div>
-		  </div>
-		  <div class="frow">
 			<input type="submit" value="Submit">
+			<input type="reset" value="Clear Form">
 		  </div>
 		</form>
-	  </div> 
+	</div> 
 </div>
+<div class="container-fluid" id ="footer"></div>
 
 </body>
 </html>
