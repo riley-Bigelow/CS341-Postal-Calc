@@ -22,31 +22,74 @@ app.listen(port, function() {
 function handleRates(request, response) {
 	const weight = parseFloat(request.query.weight);
   const itemtype = request.query.itemtype;
-  const quant= Number(request.query.itemtype);
-	calculateRate(response, weight,itemtype,quant);
+	calculateRate(response, weight,itemtype);
 }
 
 
-function calculateRate(response, type, weight, quant) {
+function calculateRate(response, weight, type) {
   var cost = 0.00
-  console(weight + " " + type);
   if(type == 'Letters(Stamped)'){
-    cost = stampedLetters(weight, quant);
+    cost = stampedLetters(weight);
   }
   else if(type == "Letters(Metered)"){
-    cost = meteredLetters(weight, quant);
+    cost = meteredLetters(weight);
   }
   else if(type="Large Envelopes(Flats)"){
-    cost = flats(weight, quant);
+    cost = flats(weight);
   }
   else{
-    cost = packages(weight,quant);
+    cost = packages(weight);
   }
+  cost = cost.toFixed(2);
+  console.log(cost);
+  
 
 	// JSON object of the values  to pass  to the EJS result
 	//const params = {weight: weight, type: type, cost: cost };
 
 	// Render the response, using "result.ejs" in the pages directory
 	//response.render('pages/result', params);
+}
+
+function stampedLetters(weight){
+  basePrice = .55;
+  increase = .15
+  if(weight > 3.5){
+    return 1.00;
+  }
+  else {
+   weight=  Math.round(weight)
+    basePrice += ((weight -1) * increase)
+    return basePrice;
+  }
+}
+
+function meteredLetters(weight){
+  basePrice = .50;
+  increase = .15
+  if(weight > 3.5){
+    return .95;
+  }
+  else {
+    weight=  Math.round(weight)
+    basePrice += ((weight -1) * increase)
+    return basePrice;
+  }
+}
+
+function flats(weight){
+  basePrice = 1.00;
+  increase = .20
+  weight = Math.round(weight)
+  if(weight > 13){
+    weight = 13;
+  }
+  if(weight < 2){
+    return basePrice;
+  }
+  else{
+    basePrice += ((weight-1) * increase)
+    return basePrice;
+  } 
 }
 

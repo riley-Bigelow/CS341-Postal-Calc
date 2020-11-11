@@ -6,48 +6,45 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="stylesheets/main.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-light navbar-light">
-	<!-- Brand/logo -->
 	<a class="navbar-brand" href="#"> 
 		<img src="images/usps.png" alt="logo" style="width: 80px;"> Postal Rate Calculator
 	</a>
 </nav>
 <div class="jumbotron text-center" id ="header"></div>
-
-  
 <div class="container">
 	<div class="fcontainer">
 		<form action="/rates">
-		  <div class="frow">
-			<div class="col-25">
-			  <label for="weight">Item Weight</label>
+			<div class="frow">
+				<div class="col-25">
+				<label for="weight">Item Weight:</label>
+				</div>
+				<div class="col-75">
+				<input type="number" id="weight" name="weight" placeholder="weight of item.." min="1" step=".25">
+				</div>
 			</div>
-			<div class="col-75">
-			  <input type="number" id="weight" name="weight" placeholder="weight of item.." min="1" step=".25">
+			<div class="frow">
+				<div class="col-25">
+				<label for="itemtype">Item type</label>
+				</div>
+				<div class="col-75">
+				<select id="itemtype" name="itemtype">
+					<option value="Letters(Stamped)">Letters(Stamped)</option>
+					<option value="Letters(Metered)">Letters(Metered)</option>
+					<option value="Large Envelopes(Flats)">Large Envelopes(Flats)</option>
+					<option value="First-Class Package Service-Retail">First-Class Package Service-Retail</option>
+				</select>
+				</div>
 			</div>
-		  </div>
-		  <div class="frow">
-			<div class="col-25">
-			  <label for="itemtype">Item type</label>
+			<div class="frow">
+				<input type="submit" value="Submit">
+				<input type="reset" value="Clear Form">
 			</div>
-			<div class="col-75">
-			  <select id="itemtype" name="itemtype">
-				<option value="Letters(Stamped)">Letters(Stamped)</option>
-				<option value="Letters(Metered)">Letters(Metered)</option>
-				<option value="Large Envelopes(Flats)">Large Envelopes(Flats)</option>
-				<option value="First-Class Package Service-Retail">First-Class Package Service-Retail</option>
-			  </select>
-			</div>
-		  </div>
-		  <div class="frow">
-			<input type="submit" value="Submit">
-			<input type="reset" value="Clear Form">
-		  </div>
 		</form>
 	</div> 
 </div>
