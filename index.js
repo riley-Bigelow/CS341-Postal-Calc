@@ -44,6 +44,9 @@ function calculateRate(response, weight, type, zone) {
   cost = cost.toFixed(2);
   console.log(cost);
   
+  if(zone == "NAN"){
+    zone = "Not Applicable";
+  }
 
 	// JSON object of the values  to pass  to the EJS result
 	const params = {weight: weight, type: type, zone: zone, cost: cost };
