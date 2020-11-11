@@ -46,10 +46,10 @@ function calculateRate(response, weight, type, zone) {
   
 
 	// JSON object of the values  to pass  to the EJS result
-	//const params = {weight: weight, type: type, cost: cost };
+	const params = {weight: weight, type: type, zone: zone, cost: cost };
 
 	// Render the response, using "result.ejs" in the pages directory
-	//response.render('pages/result', params);
+	response.render('pages/result', params);
 }
 
 function stampedLetters(weight){
