@@ -1,11 +1,43 @@
-  
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Result</title>
+	<title>Postal Rate Cost</title> 
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../../stylesheets/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<h1>Result:</h1>
-	<p>The result of performing "<%= weight %>" on <%= type %> and <%= zone %> is: <%= cost %></p>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+	<a class="navbar-brand" href="#"> 
+		<img src="../../images/usps.png" alt="logo" style="width: 80px;"> Postal Rate Calculator
+	</a>
+</nav>
+<div class="jumbotron text-center" id ="header"></div>
+<div class="container">
+	<body>
+		<h1>Postal Cost:</h1>
+		<ul>
+			<li>Item Weight: <%= weight %> oz. </li>
+			<li>Item Type: <%= type %> </li>
+			<li>Zone: <%= zone %></li>
+		</ul>
+		<p>Total Cost: <%= cost %></p>
+</div>
+<div class="container-fluid" id ="footer"></div>
+<script>
+	function activateZone(){
+		var selection  = document.getElementById('itemtype').value;
+		if(selection == 'First-Class Package Service-Retail'){
+			document.getElementById('zone').disabled = false;
+		}
+		else{
+			document.getElementById('zone').disabled = true;
+		}
+	}
+</script>
 </body>
 </html>
